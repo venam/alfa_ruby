@@ -34,6 +34,7 @@ class Spammer
 	def initialize(number, nb_sms, nb_threads)
 		@p = Printer.new
 		@number = number
+		@available = ["031", "032", "033", "034", "035", "701", "702", "703", "704", "705", "710", "716", "717", "718", "719", "761", "763", "764", "765","791","793"]
 		@nb_sms = nb_sms
 		@current_nb_sms = 0
 		@nb_threads = nb_threads
@@ -42,7 +43,20 @@ class Spammer
 		#@br.log = Logger.new "spam.log"
 	end
 
+	def good_num?
+		@available.each do |n|
+			if @number.start_with? n
+				return true
+			end
+		end
+		return false
+	end
+
 	def spam
+		if !good_num?
+			puts "#{@p.MINUS} #{@number} is not from Alfa"
+			return
+		end
 		puts "#{@p.INFO} Starting sending #{@nb_sms}sms to #{@number}"
 		threads = []
 		(1..@nb_threads).each do |n|
