@@ -96,7 +96,7 @@ end
 
 
 Spammer.new(
-	get_int_from_keyboard("Enter the number"),
+	get_int_from_keyboard("Enter the number").strip,
 	get_int_from_keyboard("Enter the times to spam").to_i,
 	get_int_from_keyboard("Enter the number of threads").to_i
 ).spam
