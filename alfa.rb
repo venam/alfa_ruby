@@ -69,7 +69,7 @@ class Spammer
 		reset_form = page.form_with :name => 'aspnetForm'
 		reset_form.field_with(
 			:name => 'ctl00$ContentPlaceHolder$mobile'
-		).value = '71624538'
+		).value = @number
 		s_button = reset_form.button_with(
 			:name => 'ctl00$ContentPlaceHolder$submit')
 		results = @br.submit(reset_form,s_button)
